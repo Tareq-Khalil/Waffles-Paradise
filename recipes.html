@@ -461,7 +461,6 @@
     </div>
 
     <script>
-        // JavaScript spread operator for recipe scaling
         const baseRecipe = {
             flour: 2,
             eggs: 2,
@@ -476,7 +475,6 @@
             salt: 0.5
         };
 
-        // Using spread operator to combine ingredients
         const completeRecipe = { ...baseRecipe, ...additionalIngredients };
 
         function calculateIngredients() {
@@ -484,7 +482,6 @@
             const baseServings = 4;
             const multiplier = servings / baseServings;
             
-            // Using spread operator to create scaled recipe
             const scaledRecipe = {};
             Object.keys(completeRecipe).forEach(ingredient => {
                 scaledRecipe[ingredient] = completeRecipe[ingredient] * multiplier;
@@ -508,12 +505,10 @@
             const answer = element.nextElementSibling;
             const isActive = answer.classList.contains('active');
             
-            // Close all FAQ answers
             document.querySelectorAll('.faq-answer').forEach(faq => {
                 faq.classList.remove('active');
             });
             
-            // Toggle current answer
             if (!isActive) {
                 answer.classList.add('active');
             }
@@ -543,7 +538,6 @@
             alert(`${recipe.title}\n\nInstructions: ${recipe.instructions}`);
         }
 
-        // Animate recipe cards on page load
         document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('.recipe-card');
             cards.forEach((card, index) => {
@@ -558,7 +552,6 @@
             });
         });
 
-        // Add hover effects to FAQ items
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('mouseenter', () => {
                 question.style.transform = 'translateX(10px)';
