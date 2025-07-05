@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waffle Recipes - Golden Crispy Perfection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            min-height: 100vh;
+            color: #2d3436;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #0984e3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #636e72;
+            font-style: italic;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2d3436;
+            font-weight: bold;
+            margin: 0 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background: #0984e3;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .page-title {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: #0984e3;
+            margin-bottom: 15px;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .recipe-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .recipe-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #fd79a8, #fdcb6e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .recipe-content {
+            padding: 25px;
+        }
+
+        .recipe-title {
+            font-size: 1.4rem;
+            color: #0984e3;
+            margin-bottom: 10px;
+        }
+
+        .recipe-description {
+            color: #636e72;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .recipe-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .stat {
+            background: #f8f9fa;
+            padding: 8px 12px;
+            border-radius: 20px;
+            color: #636e72;
+        }
+
+        .ingredients-list {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .ingredients-list h4 {
+            color: #0984e3;
+            margin-bottom: 10px;
+        }
+
+        .ingredient-item {
+            color: #636e72;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .ingredient-item:before {
+            content: "•";
+            color: #0984e3;
+            position: absolute;
+            left: 0;
+        }
+
+        .recipe-button {
+            background: #0984e3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .recipe-button:hover {
+            background: #0056b3;
+            transform: scale(1.02);
+        }
+
+        .faq-section {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .faq-title {
+            text-align: center;
+            color: #0984e3;
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            background: #0984e3;
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .faq-question:hover {
+            background: #0056b3;
+        }
+
+        .faq-answer {
+            background: white;
+            padding: 20px;
+            display: none;
+            color: #636e72;
+            line-height: 1.6;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .recipe-calculator {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .calculator-title {
+            color: #0984e3;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .calculator-input {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            width: 100px;
+            text-align: center;
+            margin: 0 10px;
+        }
+
+        .calculator-result {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            color: #636e72;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            color: #636e72;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .recipe-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .recipe-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🧇 Waffles</div>
+            <div class="tagline">Your Ultimate Recipe Collection</div>
+        </header>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#recipes">Recipes</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <section class="page-title">
+            <h1>Delicious Waffle Recipes</h1>
+            <p>From classic Belgian to innovative flavors, discover your perfect waffle</p>
+        </section>
+
+        <section class="recipe-grid">
+            <div class="recipe-card">
+                <div class="recipe-image">🧇 Classic Belgian</div>
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Classic Belgian Waffles</h3>
+                    <p class="recipe-description">Light, fluffy, and perfectly crispy. These traditional Belgian waffles are the gold standard of breakfast perfection.</p>
+                    <div class="recipe-stats">
+                        <span class="stat">⏱️ 20 min</span>
+                        <span class="stat">👥 4 servings</span>
+                        <span class="stat">⭐ Easy</span>
+                    </div>
+                    <div class="ingredients-list">
+                        <h4>Key Ingredients:</h4>
+                        <div class="ingredient-item">2 cups all-purpose flour</div>
+                        <div class="ingredient-item">2 large eggs</div>
+                        <div class="ingredient-item">1¾ cups whole milk</div>
+                        <div class="ingredient-item">½ cup melted butter</div>
+                    </div>
+                    <button class="recipe-button" onclick="showRecipeDetails('belgian')">View Full Recipe</button>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-image">🍫 Chocolate Chip</div>
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Chocolate Chip Waffles</h3>
+                    <p class="recipe-description">Indulgent waffles loaded with chocolate chips. Perfect for weekend brunches and special occasions.</p>
+                    <div class="recipe-stats">
+                        <span class="stat">⏱️ 25 min</span>
+                        <span class="stat">👥 6 servings</span>
+                        <span class="stat">⭐ Medium</span>
+                    </div>
+                    <div class="ingredients-list">
+                        <h4>Key Ingredients:</h4>
+                        <div class="ingredient-item">2 cups flour</div>
+                        <div class="ingredient-item">1 cup chocolate chips</div>
+                        <div class="ingredient-item">3 eggs</div>
+                        <div class="ingredient-item">1 cup buttermilk</div>
+                    </div>
+                    <button class="recipe-button" onclick="showRecipeDetails('chocolate')">View Full Recipe</button>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-image">🥞 Protein Power</div>
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Protein Power Waffles</h3>
+                    <p class="recipe-description">Nutritious and delicious waffles packed with protein. Great for fitness enthusiasts and health-conscious eaters.</p>
+                    <div class="recipe-stats">
+                        <span class="stat">⏱️ 15 min</span>
+                        <span class="stat">👥 2 servings</span>
+                        <span class="stat">⭐ Easy</span>
+                    </div>
+                    <div class="ingredients-list">
+                        <h4>Key Ingredients:</h4>
+                        <div class="ingredient-item">1 cup oat flour</div>
+                        <div class="ingredient-item">2 scoops protein powder</div>
+                        <div class="ingredient-item">2 eggs</div>
+                        <div class="ingredient-item">1 cup almond milk</div>
+                    </div>
+                    <button class="recipe-button" onclick="showRecipeDetails('protein')">View Full Recipe</button>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-image">🍓 Berry Bliss</div>
+                <div class="recipe-content">
+                    <h3 class="recipe-title">Mixed Berry Waffles</h3>
+                    <p class="recipe-description">Fresh berries baked right into fluffy waffles. A colorful and antioxidant-rich breakfast option.</p>
+                    <div class="recipe-stats">
+                        <span class="stat">⏱️ 30 min</span>
+                        <span class="stat">👥 4 servings</span>
+                        <span class="stat">⭐ Medium</span>
+                    </div>
+                    <div class="ingredients-list">
+                        <h4>Key Ingredients:</h4>
+                        <div class="ingredient-item">2 cups flour</div>
+                        <div class="ingredient-item">1 cup mixed berries</div>
+                        <div class="ingredient-item">2 eggs</div>
+                        <div class="ingredient-item">1½ cups milk</div>
+                    </div>
+                    <button class="recipe-button" onclick="showRecipeDetails('berry')">View Full Recipe</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="recipe-calculator">
+            <h3 class="calculator-title">Recipe Scaler</h3>
+            <p>How many people are you serving?</p>
+            <input type="number" class="calculator-input" id="servings" value="4" min="1" max="20">
+            <button class="recipe-button" onclick="calculateIngredients()" style="width: auto; margin-left: 10px;">Calculate Portions</button>
+            <div class="calculator-result" id="calculatorResult">
+                <p>Scaled ingredients will appear here...</p>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I make my waffles extra crispy?
+                </div>
+                <div class="faq-answer">
+                    For extra crispy waffles, separate your eggs and beat the whites until stiff peaks form. Fold them into the batter at the end. Also, cook them a bit longer than usual and let them rest on a wire rack instead of stacking them.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Can I make waffle batter ahead of time?
+                </div>
+                <div class="faq-answer">
+                    Yes! You can make waffle batter up to 2 days ahead. Store it in the refrigerator and give it a gentle stir before using. The batter may thicken slightly, so you might need to add a tablespoon of milk.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    What's the secret to fluffy waffles?
+                </div>
+                <div class="faq-answer">
+                    The key is not overmixing your batter. Mix just until the ingredients are combined - lumps are okay! Also, make sure your waffle iron is properly preheated and use room temperature ingredients for better mixing.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I store leftover waffles?
+                </div>
+                <div class="faq-answer">
+                    Cool waffles completely, then store them in an airtight container in the refrigerator for up to 3 days, or freeze them for up to 3 months. Toast them directly from frozen for best results.
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Waffles Paradise. Made with ❤️ and lots of syrup.</p>
+        </footer>
+    </div>
+
+    <script>
+        // JavaScript spread operator for recipe scaling
+        const baseRecipe = {
+            flour: 2,
+            eggs: 2,
+            milk: 1.75,
+            butter: 0.5,
+            sugar: 0.25,
+            bakingPowder: 2
+        };
+
+        const additionalIngredients = {
+            vanilla: 1,
+            salt: 0.5
+        };
+
+        // Using spread operator to combine ingredients
+        const completeRecipe = { ...baseRecipe, ...additionalIngredients };
+
+        function calculateIngredients() {
+            const servings = parseInt(document.getElementById('servings').value);
+            const baseServings = 4;
+            const multiplier = servings / baseServings;
+            
+            // Using spread operator to create scaled recipe
+            const scaledRecipe = {};
+            Object.keys(completeRecipe).forEach(ingredient => {
+                scaledRecipe[ingredient] = completeRecipe[ingredient] * multiplier;
+            });
+            
+            const resultDiv = document.getElementById('calculatorResult');
+            resultDiv.innerHTML = `
+                <h4>Ingredients for ${servings} servings:</h4>
+                <p><strong>Flour:</strong> ${scaledRecipe.flour} cups</p>
+                <p><strong>Eggs:</strong> ${scaledRecipe.eggs} large</p>
+                <p><strong>Milk:</strong> ${scaledRecipe.milk.toFixed(2)} cups</p>
+                <p><strong>Butter:</strong> ${scaledRecipe.butter} cup</p>
+                <p><strong>Sugar:</strong> ${scaledRecipe.sugar} cup</p>
+                <p><strong>Baking Powder:</strong> ${scaledRecipe.bakingPowder} tsp</p>
+                <p><strong>Vanilla:</strong> ${scaledRecipe.vanilla} tsp</p>
+                <p><strong>Salt:</strong> ${scaledRecipe.salt} tsp</p>
+            `;
+        }
+
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Close all FAQ answers
+            document.querySelectorAll('.faq-answer').forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            // Toggle current answer
+            if (!isActive) {
+                answer.classList.add('active');
+            }
+        }
+
+        function showRecipeDetails(recipeType) {
+            const recipes = {
+                belgian: {
+                    title: "Classic Belgian Waffles",
+                    instructions: "Mix dry ingredients, combine wet ingredients separately, then fold together gently. Cook in preheated waffle iron until golden brown."
+                },
+                chocolate: {
+                    title: "Chocolate Chip Waffles",
+                    instructions: "Prepare batter as for classic waffles, then fold in chocolate chips. Cook until chips are melted and waffles are crispy."
+                },
+                protein: {
+                    title: "Protein Power Waffles",
+                    instructions: "Blend all ingredients until smooth. Let batter rest 5 minutes before cooking. Perfect for post-workout fuel!"
+                },
+                berry: {
+                    title: "Mixed Berry Waffles",
+                    instructions: "Gently fold fresh berries into batter. Cook until berries are warm and waffles are golden. Serve with extra berries."
+                }
+            };
+            
+            const recipe = recipes[recipeType];
+            alert(`${recipe.title}\n\nInstructions: ${recipe.instructions}`);
+        }
+
+        // Animate recipe cards on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.recipe-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // Add hover effects to FAQ items
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('mouseenter', () => {
+                question.style.transform = 'translateX(10px)';
+            });
+            
+            question.addEventListener('mouseleave', () => {
+                question.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body>
+</html>
